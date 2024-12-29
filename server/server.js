@@ -20,7 +20,7 @@ app.use(express.json()); // parse request data as json
 
 const localhostPath = "/project";
 
-const netlifyPath = "/.netlify/routes/project";
+const netlifyPath = "/project";
 
 const chosenPath = netlifyPath;
 

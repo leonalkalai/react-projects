@@ -5,7 +5,7 @@
 [[redirects]]
   # Redirect all API requests to the Netlify function
   from = "/project/*"
-  to = "/.netlify/functions/projects/:splat"
+  to = "/.netlify/functions/project"
   status = 200
 
 [[headers]]
