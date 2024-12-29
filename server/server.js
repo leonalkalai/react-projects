@@ -10,7 +10,7 @@ const app = express(); // set express server
 
 app.use(
   cors({
-    origin: "https://leonalkalai.github.io/react-projects", // Replace with your GitHub Pages URL
+    origin: "*", // Replace with your GitHub Pages URL
     methods: ["GET", "POST", "DELETE", "PATCH", "OPTIONS"], // Add PATCH method
     allowedHeaders: ["Content-Type", "Authorization"],
   })
@@ -20,7 +20,7 @@ app.use(express.json()); // parse request data as json
 
 const localhostPath = "/project";
 
-const netlifyPath = "/.netlify/functions/projects";
+const netlifyPath = "/.netlify/routes/project";
 
 const chosenPath = netlifyPath;
 

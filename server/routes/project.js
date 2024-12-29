@@ -8,16 +8,19 @@ const router = express.Router(); // create new instance of Router to create midd
 
 // Helper function to set CORS headers
 const setCorsHeaders = (response) => {
-  response.setHeader(
-    "Access-Control-Allow-Origin",
-    "https://leonalkalai.github.io"
-  ); // Allow your GitHub Pages URL
+  response.setHeader("Access-Control-Allow-Origin", "*"); // Allow your GitHub Pages URL
   response.setHeader(
     "Access-Control-Allow-Methods",
     "GET, POST, PATCH, DELETE"
   ); // Allow GET, POST, PATCH, DELETE methods
   response.setHeader("Access-Control-Allow-Headers", "Content-Type"); // Allow content-type header
 };
+
+// Handle preflight requests (OPTIONS method)
+router.options("*", (request, response) => {
+  setCorsHeaders(response);
+  response.status(200).send();
+});
 
 // ********** Application routes **********
 // [ https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Server-side/Express_Nodejs/routes ]

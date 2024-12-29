@@ -12,6 +12,6 @@
  # Add CORS headers to the API
   for = "/.netlify/functions/projects/*"
   [headers.values]
-    Access-Control-Allow-Origin = "https://leonalkalai.github.io"
+    Access-Control-Allow-Origin = "*"
     Access-Control-Allow-Methods = "GET, POST, DELETE, PATCH"  # Add PATCH method
     Access-Control-Allow-Headers = "Content-Type"
