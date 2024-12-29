@@ -1,2 +1,3 @@
-# react-blog-app
-react-blog-app
+# react-projects
+
+react-projects
