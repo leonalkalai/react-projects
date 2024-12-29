@@ -8,5 +8,11 @@
   ],
   "env": {
     "ATLAS_URI": "@atlas-uri"
-  }
+  },
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
 }
