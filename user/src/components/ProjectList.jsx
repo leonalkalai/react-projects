@@ -105,7 +105,14 @@ export default function ProjectList() {
     async function getProjects() {
       // [ https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch ]
       try {
-        const response = await fetch(GET_URL); // await to fetch the url
+        const response = await fetch(GET_URL, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            // Add any other headers if required
+          },
+          mode: "no-cors", // Ensures CORS headers are respected (if needed)
+        }); // await to fetch the url
         // check if response is ok
         if (!response.ok) {
           throw new Error(
