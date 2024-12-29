@@ -58,7 +58,7 @@ Please change the parent <Route path="${j}"> to <Route path="${j==="/"?"*":`${j}
  * LICENSE.md file in the root directory of this source tree.
  *
  * @license MIT
- */function Dm(o){return T.createElement(Qh,{flushSync:Tm.flushSync,...o})}const Mm="/assets/logo-Bd_LUA0M.svg";function jm(){return J.jsx(J.Fragment,{children:J.jsxs("nav",{className:"flex justify-between items-center mb-6",children:[J.jsx(lu,{to:"/",children:J.jsx("img",{className:"h-10 min-h-28 inline",src:Mm,alt:"logo"})}),J.jsx(lu,{className:`\r
+ */function Dm(o){return T.createElement(Qh,{flushSync:Tm.flushSync,...o})}const Mm="/react-projects/user/assets/logo-Bd_LUA0M.svg";function jm(){return J.jsx(J.Fragment,{children:J.jsxs("nav",{className:"flex justify-between items-center mb-6",children:[J.jsx(lu,{to:"/",children:J.jsx("img",{className:"h-10 min-h-28 inline",src:Mm,alt:"logo"})}),J.jsx(lu,{className:`\r
           inline-flex items-center justify-center \r
           whitespace-nowrap text-md font-medium \r
           ring-offset-background transition-colors\r
