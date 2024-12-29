@@ -11,14 +11,20 @@ const app = express(); // set express server
 app.use(
   cors({
     origin: "https://leonalkalai.github.io/react-projects", // Replace with your GitHub Pages URL
-    methods: ["GET", "POST", "DELETE", "OPTIONS"],
+    methods: ["GET", "POST", "DELETE", "PATCH", "OPTIONS"], // Add PATCH method
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
 app.use(express.json()); // parse request data as json
 
-app.use("/project", projects); // use data entries [ example all entries "/db_entry" - specific entry "/db_entry/145" ]
+const localhostPath = "/project";
+
+const netlifyPath = "/.netlify/functions/projects";
+
+const chosenPath = netlifyPath;
+
+app.use(`${chosenPath}`, projects); // use data entries [ example all entries "/db_entry" - specific entry "/db_entry/145" ]
 
 app.listen(PORT, () => {
   // start express server listening to the port

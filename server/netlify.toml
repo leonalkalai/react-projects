@@ -3,12 +3,15 @@
   functions = "server"
 
 [[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/projects"
+  # Redirect all API requests to the Netlify function
+  from = "/project/*"
+  to = "/.netlify/functions/projects/:splat"
   status = 200
-  
+
 [[headers]]
-for = "/project/*"
-[headers.values]
-Access-Control-Allow-Origin = "https://leonalkalai.github.io"
-Access-Control-Allow-Methods = "GET, POST, DELETE"  
+ # Add CORS headers to the API
+  for = "/.netlify/functions/projects/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "https://leonalkalai.github.io"
+    Access-Control-Allow-Methods = "GET, POST, DELETE, PATCH"  # Add PATCH method
+    Access-Control-Allow-Headers = "Content-Type"

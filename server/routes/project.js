@@ -6,6 +6,19 @@ import { ObjectId } from "mongodb"; // import ObjectId method to convert the _id
 
 const router = express.Router(); // create new instance of Router to create middleware for requests
 
+// Helper function to set CORS headers
+const setCorsHeaders = (response) => {
+  response.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://leonalkalai.github.io"
+  ); // Allow your GitHub Pages URL
+  response.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PATCH, DELETE"
+  ); // Allow GET, POST, PATCH, DELETE methods
+  response.setHeader("Access-Control-Allow-Headers", "Content-Type"); // Allow content-type header
+};
+
 // ********** Application routes **********
 // [ https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Server-side/Express_Nodejs/routes ]
 
@@ -21,6 +34,7 @@ router.get("/", async (request, response) => {
   */
   const projects = await collection.find({}).toArray();
 
+  setCorsHeaders(response); // Set CORS headers before sending the response
   response.send(projects).status(200); // send response with status 200 ok
 });
 
@@ -54,6 +68,7 @@ router.get("/:id", async (request, response) => {
    */
   const project = await collection.findOne(query);
 
+  setCorsHeaders(response); // Set CORS headers before sending the response
   // check if no projects are found
   if (!project) {
     response
@@ -106,7 +121,7 @@ router.post("/", async (request, response) => {
     const collection = await db.collection("projects"); // get the projects collection
 
     const project = await collection.insertOne(newProject); // [ https://www.mongodb.com/docs/manual/reference/method/db.collection.insertOne/ ]
-
+    setCorsHeaders(response); // Set CORS headers before sending the response
     response.send(project).status(204); // send response with status 204 ok [ https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/204 ]
   } catch (error) {
     console.error(error); // console log error
@@ -148,7 +163,7 @@ router.patch("/:id", async (request, response) => {
         */
 
     const project = await collection.updateOne(query, projectUpdates); // [ https://www.mongodb.com/docs/php-library/current/reference/method/MongoDBCollection-updateOne/ ]
-
+    setCorsHeaders(response); // Set CORS headers before sending the response
     response.send(project).status(200); // send response with status 200 ok [ https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/200 ]
   } catch (error) {
     console.error(error); // console log error
@@ -173,7 +188,7 @@ router.delete("/:id", async (request, response) => {
     const collection = await projects_db.collection("projects"); // get the projects collection
 
     const project = await collection.deleteOne(query); // [https://www.mongodb.com/docs/manual/reference/method/db.collection.deleteOne/ ]
-
+    setCorsHeaders(response); // Set CORS headers before sending the response
     response.send(project).status(200); // send response with status 200 ok [ https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/200 ]
   } catch (error) {
     console.error(error); // console log error
