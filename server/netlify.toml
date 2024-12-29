@@ -6,3 +6,9 @@
   from = "/api/*"
   to = "/.netlify/functions/projects"
   status = 200
+  
+[[headers]]
+for = "/project/*"
+[headers.values]
+Access-Control-Allow-Origin = "https://leonalkalai.github.io"
+Access-Control-Allow-Methods = "GET, POST, DELETE"  

@@ -6,7 +6,15 @@ const PORT = process.env.PORT || 5050; // set port from env or to 5050 if missin
 
 const app = express(); // set express server
 
-app.use(cors()); // use cors
+//app.use(cors()); // use cors
+
+app.use(
+  cors({
+    origin: "https://leonalkalai.github.io/react-projects", // Replace with your GitHub Pages URL
+    methods: ["GET", "POST", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 
 app.use(express.json()); // parse request data as json
 
