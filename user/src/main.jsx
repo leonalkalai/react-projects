@@ -12,16 +12,19 @@ import ProjectList from "./components/ProjectList"; // import ProjectsList compo
 import "./index.css"; // import css
 
 // router setup [ https://blog.logrocket.com/react-router-dom-tutorial-examples/ ]
+const localhostPath = "/"; // select this if localhost
+const githubpagesPath = "/react-projects/"; // select this if hosted on github pages
+const browserRouterPath = githubpagesPath; // choose the path
 
 const router = createBrowserRouter([
   // show all projects route
   {
-    path: "/" /*  root path */,
+    path: `${browserRouterPath}` /*  root path */,
     element: <App />, // main app
     children: [
       {
         // children of main app
-        path: "/", // root path
+        path: `${browserRouterPath}`, // root path
         element: <ProjectList />, // all of the projects
       },
     ],
@@ -59,7 +62,12 @@ ReactDOM.createRoot(
   // The render() method is then called to define the React component that should be rendered [ https://www.w3schools.com/react/react_render.asp ]
   // show errors for common bugs components during development [ https://react.dev/reference/react/StrictMode ]
   <React.StrictMode>
-    <RouterProvider router={router} />{" "}
+    <RouterProvider router={router} basename="/react-projects" />
+    {/*  set the base url to /react-projects 
+    [ https://v5.reactrouter.com/web/api/BrowserRouter/basename-string ]
+    The base URL for all locations. 
+    If your app is served from a sub-directory on your server (github pages),set this to the sub-directory
+    */}
     {/*https://dev.to/thevinitgupta/react-router-dom-v6-tutorial-for-everyone-4i0k */}
   </React.StrictMode>
 );
