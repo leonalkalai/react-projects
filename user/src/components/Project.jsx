@@ -27,6 +27,10 @@ export default function Project() {
 
   const navigate = useNavigate(); // get url navigation history
 
+  const localhostPath = "http://localhost:5050"; // select this for localhost
+  const netlifyPath = "https://brilliant-strudel-b8b3ca.netlify.app"; // select this for netlify
+  const URL = netlifyPath; // select the netlify custom API
+
   // start useEffect
   useEffect(() => {
     // Connect to the database [ https://react.dev/reference/react/useEffect#connecting-to-an-external-system ]
@@ -44,7 +48,7 @@ export default function Project() {
       if (!id) return; // if id doesn't exist return
       setIsNewProject(false); // else if update project set NewProject state as false because it is not a new project
       try {
-        const URL_ID = `http://localhost:5050/project/${params.id.toString()}`; // get the id from the params object and convert it to string
+        const URL_ID = `${URL}/project/${params.id.toString()}`; // get the id from the params object and convert it to string
         const response = await fetch(URL_ID); // await to fetch the url id
         // check if response is ok
         if (!response.ok) {
@@ -96,7 +100,7 @@ export default function Project() {
       let response; // create a response object
       if (isNewProject) {
         // if creating a new project post to /project
-        const POST_URL = `http://localhost:5050/project`;
+        const POST_URL = `${URL}/project`;
         response = await fetch(POST_URL, {
           method: "POST", // add post method // [ https://www.freecodecamp.org/news/javascript-post-request-how-to-send-an-http-post-request-in-js/ ]
           headers: {
@@ -106,7 +110,7 @@ export default function Project() {
         }); // await to fetch the url
       } else {
         // if updating a project patch to /project/:id
-        const PATCH_URL = `http://localhost:5050/project/${params.id}`;
+        const PATCH_URL = `${URL}/project/${params.id}`;
         response = await fetch(PATCH_URL, {
           method: "PATCH", // add patch method
           headers: {
