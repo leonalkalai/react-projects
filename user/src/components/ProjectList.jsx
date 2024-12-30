@@ -96,7 +96,7 @@ const Project = (props) => {
 const localhostPath = "http://localhost:5050"; // select this for localhost
 const netlifyPath =
   "https://brilliant-strudel-b8b3ca.netlify.app/.netlify/functions/project"; // select this for netlify
-const URL = localhostPath; // select the netlify custom API
+const URL = netlifyPath; // select the netlify custom API
 
 export default function ProjectList() {
   const [projects, setProjects] = useState([]); // set usestate for project list [ https://react.dev/learn/updating-arrays-in-state ]
