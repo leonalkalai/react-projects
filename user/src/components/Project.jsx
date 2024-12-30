@@ -29,7 +29,7 @@ export default function Project() {
 
   const localhostPath = "http://localhost:5050"; // select this for localhost
   const netlifyPath =
-    "https://brilliant-strudel-b8b3ca.netlify.app/.netlify/functions/project"; // select this for netlify
+    "https://brilliant-strudel-b8b3ca.netlify.app/.netlify/functions"; // select this for netlify
   const URL = netlifyPath; // select the netlify custom API
 
   // start useEffect
