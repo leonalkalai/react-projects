@@ -2,7 +2,7 @@
   "name": "user",
   "private": true,
   "version": "0.0.0",
-  "type": "commonjs",
+  "type": "module",
   "homepage": "https://leonalkalai.github.io/react-projects/",
   "scripts": {
     "dev": "vite",

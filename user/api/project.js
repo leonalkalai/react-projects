@@ -35,7 +35,8 @@ event -> input event initiating the function. HTTP event -> web event.
 context ->  function’s execution environment data(timeout, memory)
 
 */
-export async function handler(event, context) {
+export const handler = async (event, context) => {
+  //export async function handler(event, context) {
   const { method, path, query, body } = event; // destructuring event object
   const id = path.split("/").pop(); // get id from the path
   /*
@@ -91,7 +92,7 @@ export async function handler(event, context) {
       body: "server error occured",
     };
   }
-}
+};
 
 // check if serverless
 if (!serverless) {
