@@ -39,7 +39,7 @@ const Project = (props) => {
                    data-[state=selected]:bg-muted"
     >
       {/* [https://react.dev/learn/rendering-lists ] */}
-      {categories &
+      {categories &&
         categories.map((category) => (
           <td
             key={category}
@@ -151,7 +151,7 @@ export default function ProjectList() {
   function projectList() {
     console.log(projects);
     return (
-      projects &
+      projects &&
       projects.map((project) => {
         console.log(project);
         return (
@@ -180,7 +180,7 @@ export default function ProjectList() {
             <thead className="[&amp;_tr]:border-b">
               <tr className="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
                 {/* loop over the categories */}
-                {categories &
+                {categories &&
                   categories.map((category) => (
                     <th
                       key={category}
