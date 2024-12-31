@@ -39,14 +39,15 @@ const Project = (props) => {
                    data-[state=selected]:bg-muted"
     >
       {/* [https://react.dev/learn/rendering-lists ] */}
-      {categories.map((category) => (
-        <td
-          key={category}
-          className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0"
-        >
-          ${props.project.ProjectListProp[category]}
-        </td>
-      ))}
+      {categories &
+        categories.map((category) => (
+          <td
+            key={category}
+            className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0"
+          >
+            ${props.project.ProjectListProp[category]}
+          </td>
+        ))}
       <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
         <div className="flex gap-2">
           <Link
@@ -149,20 +150,23 @@ export default function ProjectList() {
   // loop over the projects with map [ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map ]
   function projectList() {
     console.log(projects);
-    return projects.map((project) => {
-      console.log(project);
-      return (
-        <Project
-          key={project._id}
-          project={project}
-          // [ https://hackernoon.com/how-to-pass-a-function-via-props-in-react ]
-          // deleteProject={() => {
-          //   props.deleteProject(props.project._id);
-          // }}
-          deleteProject={deleteProject}
-        />
-      );
-    });
+    return (
+      projects &
+      projects.map((project) => {
+        console.log(project);
+        return (
+          <Project
+            key={project._id}
+            project={project}
+            // [ https://hackernoon.com/how-to-pass-a-function-via-props-in-react ]
+            // deleteProject={() => {
+            //   props.deleteProject(props.project._id);
+            // }}
+            deleteProject={deleteProject}
+          />
+        );
+      })
+    );
   }
   // list project method end
 
@@ -176,14 +180,15 @@ export default function ProjectList() {
             <thead className="[&amp;_tr]:border-b">
               <tr className="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
                 {/* loop over the categories */}
-                {categories.map((category) => (
-                  <th
-                    key={category}
-                    className="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0"
-                  >
-                    {category}
-                  </th>
-                ))}
+                {categories &
+                  categories.map((category) => (
+                    <th
+                      key={category}
+                      className="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0"
+                    >
+                      {category}
+                    </th>
+                  ))}
               </tr>
             </thead>
             <tbody className="[&amp;_tr:last-child]:border-0">
