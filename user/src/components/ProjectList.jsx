@@ -159,7 +159,8 @@ export default function ProjectList() {
       );
     }
 
-    return projects.map((project) => {
+    return Object.keys(projects).forEach((project) => {
+      // return projects.map((project) => {
       console.log(`projectsmap: ${project} ${typeof project}`);
       return (
         <Project
