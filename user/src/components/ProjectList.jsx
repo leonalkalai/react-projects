@@ -94,8 +94,7 @@ const Project = (props) => {
 // Project list logic start
 
 const localhostPath = "http://localhost:5050"; // select this for localhost
-const netlifyPath =
-  "https://brilliant-strudel-b8b3ca.netlify.app/.netlify/functions"; // select this for netlify
+const netlifyPath = "https://brilliant-strudel-b8b3ca.netlify.app/api"; // select this for netlify
 const URL = netlifyPath; // select the netlify custom API
 
 export default function ProjectList() {
@@ -121,6 +120,7 @@ export default function ProjectList() {
           );
         }
         const fetchedProjects = await response.json(); // store the data
+        console.log(fetchedProjects);
         setProjects(fetchedProjects); // set the projects state to the new data
       } catch (error) {
         // catch error
