@@ -140,7 +140,7 @@ export default function ProjectList() {
     const response = await fetch(DELETE_URL, {
       method: "DELETE", // add delete method
     }); // await to fetch the url
-    const updatedProjects = projects((el) => el._id !== id); // update the data using filter return the projects that don't have this id[ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter ]
+    const updatedProjects = projects.filter((el) => el._id !== id); // update the data using filter return the projects that don't have this id[ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter ]
     setProjects(updatedProjects); // set the projects state to the new data
   }
   // delete project method end
@@ -154,9 +154,10 @@ export default function ProjectList() {
           key={project._id}
           project={project}
           // [ https://hackernoon.com/how-to-pass-a-function-via-props-in-react ]
-          deleteProject={() => {
-            props.deleteProject(props.project._id);
-          }}
+          // deleteProject={() => {
+          //   props.deleteProject(props.project._id);
+          // }}
+          deleteProject={deleteProject}
         />
       );
     });
