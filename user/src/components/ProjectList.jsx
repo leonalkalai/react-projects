@@ -150,23 +150,28 @@ export default function ProjectList() {
   // loop over the projects with map [ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map ]
   function projectList() {
     console.log(projects);
-    return (
-      projects &&
-      projects.map((project) => {
-        console.log(project);
-        return (
-          <Project
-            key={project._id}
-            project={project}
-            // [ https://hackernoon.com/how-to-pass-a-function-via-props-in-react ]
-            // deleteProject={() => {
-            //   props.deleteProject(props.project._id);
-            // }}
-            deleteProject={deleteProject}
-          />
-        );
-      })
-    );
+    if (!Array.isArray(projects) || projects.length === 0) {
+      return (
+        <tr>
+          <td colSpan="7">No projects available</td>
+        </tr>
+      );
+    }
+
+    return projects.map((project) => {
+      console.log(project);
+      return (
+        <Project
+          key={project._id}
+          project={project}
+          // [ https://hackernoon.com/how-to-pass-a-function-via-props-in-react ]
+          // deleteProject={() => {
+          //   props.deleteProject(props.project._id);
+          // }}
+          deleteProject={deleteProject}
+        />
+      );
+    });
   }
   // list project method end
 
