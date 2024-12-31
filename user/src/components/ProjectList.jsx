@@ -120,8 +120,8 @@ export default function ProjectList() {
           );
         }
         const fetchedProjects = await response.json(); // store the data
-        console.log(fetchedProjects);
-        setProjects(fetchedProjects); // set the projects state to the new data
+        console.log(fetchedProjects.body);
+        setProjects(fetchedProjects.body); // set the projects state to the new data
       } catch (error) {
         // catch error
         const message = error.message;
