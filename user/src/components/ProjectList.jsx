@@ -112,7 +112,7 @@ export default function ProjectList() {
             "Content-Type": "application/json",
             // Add any other headers if required
           },
-          mode: "no-cors", // Ensures CORS headers are respected (if needed)
+          mode: "cors", // Ensures CORS headers are respected (if needed)
         }); // await to fetch the url
         // check if response is ok
         if (!response.ok) {

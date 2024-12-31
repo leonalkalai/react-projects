@@ -78,7 +78,7 @@ export default function Project() {
   // end useEffect
 
   //  start method to update project data
-  function UpdateForm(currentValue) {
+  function updateForm(currentValue) {
     /* get previous value to use it for next render 
         [ https://www.geeksforgeeks.org/how-to-get-previous-state-in-reactjs-functional-component/ ]
         https://react.dev/reference/react/useState#updating-state-based-on-the-previous-state
