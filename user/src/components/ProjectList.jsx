@@ -122,7 +122,7 @@ export default function ProjectList() {
           );
         }
         const fetchedProjects = await response.json(); // store the data
-        setProjects(fetchedProjects.body); // set the projects state to the new data
+        setProjects(fetchedProjects.data); // set the projects state to the new data
         console.log(`useEffect: ${projects} ${typeof projects}`);
       } catch (error) {
         // catch error
@@ -132,7 +132,7 @@ export default function ProjectList() {
     }
     getProjects(); // get projects on load or when projects change
     return;
-  }, [projects.length]); // repeat when new project is added or project is deleted - the length of projects changes
+  }, []); // repeat when new project is added or project is deleted - the length of projects changes
 
   // delete project method start
   async function deleteProject(id) {
