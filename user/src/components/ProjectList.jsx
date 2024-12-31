@@ -149,19 +149,20 @@ export default function ProjectList() {
   // list project method start
   // loop over the projects with map [ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map ]
   function projectList() {
-    console.log(`projectList: ${projects} ${typeof projects}`);
+    //console.log(`projectList: ${projects} ${typeof projects}`);
     // console.log(`projectList: ${JSON.stringify(projects)} ${typeof projects}`);
-    if (!projects || projects.length === 0) {
-      return (
-        <tr>
-          <td colSpan="7">No projects available</td>
-        </tr>
-      );
-    }
+    // if (!projects || projects.length === 0) {
+    //   return (
+    //     <tr>
+    //       <td colSpan="7">No projects available</td>
+    //     </tr>
+    //   );
+    // }
 
-    return Object.keys(projects).forEach((project) => {
-      // return projects.map((project) => {
+    //return Object.keys(projects).forEach((project) => {
+    return projects.map((project, index) => {
       console.log(`projectsmap: ${project} ${typeof project}`);
+      console.log(`Project ${index}:`, project.name);
       return (
         <Project
           key={project._id}
