@@ -171,15 +171,18 @@ export default function ProjectList() {
         console.log(`Project ${index}: Name is not available`);
       }
       return (
-        <Project
-          key={project._id}
-          project={project}
-          // [ https://hackernoon.com/how-to-pass-a-function-via-props-in-react ]
-          // deleteProject={() => {
-          //   props.deleteProject(props.project._id);
-          // }}
-          deleteProject={deleteProject}
-        />
+        <div key={index}>
+          <h3>{project?.name || "Unnamed Project"}</h3>
+          {/* // <Project
+        //   key={project._id}
+        //   project={project}
+        //   // [ https://hackernoon.com/how-to-pass-a-function-via-props-in-react ]
+        //   // deleteProject={() => {
+        //   //   props.deleteProject(props.project._id);
+        //   // }}
+        //   deleteProject={deleteProject}
+        // /> */}
+        </div>
       );
     });
   }
