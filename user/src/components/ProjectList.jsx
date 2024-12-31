@@ -121,8 +121,8 @@ export default function ProjectList() {
           );
         }
         const fetchedProjects = await response.json(); // store the data
-        console.log(fetchedProjects.body);
         setProjects(fetchedProjects.body); // set the projects state to the new data
+        console.log(projects);
       } catch (error) {
         // catch error
         const message = error.message;
@@ -148,7 +148,9 @@ export default function ProjectList() {
   // list project method start
   // loop over the projects with map [ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map ]
   function projectList() {
+    console.log(projects);
     return projects.map((project) => {
+      console.log(project);
       return (
         <Project
           key={project._id}
