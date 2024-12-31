@@ -122,7 +122,7 @@ export default function ProjectList() {
           );
         }
         const fetchedProjects = await response.json(); // store the data
-        setProjects(JSON.parse(fetchedProjects.body)); // set the projects state to the new data
+        setProjects(fetchedProjects.body); // set the projects state to the new data
         console.log(`useEffect: ${projects} ${typeof projects}`);
       } catch (error) {
         // catch error
@@ -150,7 +150,7 @@ export default function ProjectList() {
   // loop over the projects with map [ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map ]
   function projectList() {
     console.log(`projectList: ${projects} ${typeof projects}`);
-    console.log(`projectList: ${JSON.parse(projects)} ${typeof projects}`);
+    // console.log(`projectList: ${JSON.stringify(projects)} ${typeof projects}`);
     if (!Array.isArray(projects) || projects.length === 0) {
       return (
         <tr>
