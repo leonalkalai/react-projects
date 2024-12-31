@@ -162,7 +162,8 @@ export default function ProjectList() {
     //return Object.keys(projects).forEach((project) => {
     return projects.map((project, index) => {
       console.log(`projectsmap: ${project} ${typeof project}`);
-      console.log(`Project ${index}:`, project.name);
+      console.log(`Project ${index}:`, JSON.stringify(project.name));
+      console.log(`projectsmap: ${JSON.stringify(project, null, 2)}`);
       return (
         <Project
           key={project._id}
