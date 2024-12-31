@@ -151,7 +151,7 @@ export default function ProjectList() {
   function projectList() {
     console.log(`projectList: ${projects} ${typeof projects}`);
     // console.log(`projectList: ${JSON.stringify(projects)} ${typeof projects}`);
-    if (!Array.isArray(projects) || projects.length === 0) {
+    if (!projects || projects.length === 0) {
       return (
         <tr>
           <td colSpan="7">No projects available</td>
