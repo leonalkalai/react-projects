@@ -161,9 +161,15 @@ export default function ProjectList() {
 
     //return Object.keys(projects).forEach((project) => {
     return projects.map((project, index) => {
-      console.log(`projectsmap: ${project} ${typeof project}`);
-      console.log(`Project ${index}:`, JSON.stringify(project.name));
-      console.log(`projectsmap: ${JSON.stringify(project, null, 2)}`);
+      // console.log(`projectsmap: ${project} ${typeof project}`);
+      //console.log(`Project ${index}:`, JSON.stringify(project.name));
+      // console.log(`projectsmap: ${JSON.stringify(project.name, null, 2)}`);
+      // Check if the project has a valid name
+      if (project && project.name) {
+        console.log(`Project ${index}: ${project.name}`);
+      } else {
+        console.log(`Project ${index}: Name is not available`);
+      }
       return (
         <Project
           key={project._id}
