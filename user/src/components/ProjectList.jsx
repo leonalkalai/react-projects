@@ -32,6 +32,7 @@ const Project = (props) => {
     &amp; is required in JSX to escape the & character properly. [ https://kamrutkar.hashnode.dev/unescaped-html-entities-in-jsx-reactno-unescaped-entities ]
     // */
   }
+
   return (
     <tr
       className="border-b transition-colors hover:bg-muted/50 
@@ -43,7 +44,7 @@ const Project = (props) => {
           key={category}
           className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0"
         >
-          ${props.project.ProjectListProp[key]}
+          ${props.project.ProjectListProp[category]}
         </td>
       ))}
       <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
