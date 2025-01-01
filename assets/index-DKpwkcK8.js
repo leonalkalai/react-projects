@@ -75,7 +75,7 @@ Please change the parent <Route path="${z}"> to <Route path="${z==="/"?"*":`${z}
                     disabled:pointer-events-none disabled:opacity-50\r
                     border border-input\r
                     bg-background hover:bg-slate-100\r
-                    h-9 rounded-md px-3`,to:`/edit/${o.project._id}`,children:"Edit"}),J.jsx("button",{className:`\r
+                    h-9 rounded-md px-3`,to:`/react-projects/edit/${o.project._id}`,children:"Edit"}),J.jsx("button",{className:`\r
                     inline-flex items-center justify-center \r
                     whitespace-nowrap text-sm font-medium \r
                     ring-offset-background transition-colors\r
