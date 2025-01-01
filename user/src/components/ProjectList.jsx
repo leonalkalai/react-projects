@@ -172,7 +172,7 @@ export default function ProjectList() {
       }
       // [ https://hackernoon.com/how-to-pass-a-function-via-props-in-react ]
       return (
-        <div key={index}>
+        <tbody key={index} className="[&amp;_tr:last-child]:border-0">
           <Project
             key={project._id}
             project={project}
@@ -181,7 +181,7 @@ export default function ProjectList() {
             }}
             //deleteProject={deleteProject}
           />
-        </div>
+        </tbody>
       );
     });
   }
@@ -208,9 +208,7 @@ export default function ProjectList() {
                   ))}
               </tr>
             </thead>
-            <tbody className="[&amp;_tr:last-child]:border-0">
-              {projectList()}
-            </tbody>
+            {projectList()}
           </table>
         </div>
       </div>
