@@ -16,7 +16,7 @@ export default function Navbar() {
   return (
     <>
       <nav className="flex justify-between items-center mb-6">
-        <NavLink to="/">
+        <NavLink to="./">
           <img className="h-10 min-h-28 inline" src={Logo} alt="logo" />
         </NavLink>
         <NavLink
@@ -29,7 +29,7 @@ export default function Navbar() {
           border border-input
           bg-background hover:bg-slate-100
           h-9 rounded-md px-3"
-          to="/create"
+          to="./create"
         >
           Create Project
         </NavLink>
