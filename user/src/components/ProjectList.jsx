@@ -165,11 +165,11 @@ export default function ProjectList() {
       //console.log(`Project ${index}:`, JSON.stringify(project.name));
       // console.log(`projectsmap: ${JSON.stringify(project.name, null, 2)}`);
       // Check if the project has a valid name
-      if (project && project.name) {
-        console.log(`Project ${index}: ${project.name}`);
-      } else {
-        console.log(`Project ${index}: Name is not available`);
-      }
+      // if (project && project.name) {
+      //   console.log(`Project ${index}: ${project.name}`);
+      // } else {
+      //   console.log(`Project ${index}: Name is not available`);
+      // }
       // [ https://hackernoon.com/how-to-pass-a-function-via-props-in-react ]
       return (
         <tbody key={index} className="[&amp;_tr:last-child]:border-0">
