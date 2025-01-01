@@ -45,7 +45,7 @@ const Project = (props) => {
             key={category}
             className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0"
           >
-            ${props.project.ProjectListProp[category]}
+            ${props.project[category]}
           </td>
         ))}
       <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
