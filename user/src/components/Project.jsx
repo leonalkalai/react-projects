@@ -31,6 +31,8 @@ export default function Project() {
   const netlifyPath = "https://brilliant-strudel-b8b3ca.netlify.app/api"; // select this for netlify
   const URL = netlifyPath; // select the netlify custom API
 
+  const homePath = "/react-projects"; // select this if hosted on github pages
+
   // start useEffect
   useEffect(() => {
     // Connect to the database [ https://react.dev/reference/react/useEffect#connecting-to-an-external-system ]
@@ -61,7 +63,7 @@ export default function Project() {
           // if project with specific doesn't exist
           const message = `Project with id ${id} not found`; // set error message
           console.warn(message); // make a warning
-          navigate("/"); // return to home
+          navigate(`${homePath}`); // return to home
           return;
         }
         setForm(fetchedProject); // fill the form with the project data
@@ -141,7 +143,7 @@ export default function Project() {
         url: "",
         image: "",
       });
-      navigate("/"); // return home
+      navigate(`${homePath}`); // return home
     }
   }
   //  end method handler to submit data
