@@ -179,7 +179,7 @@ export default function ProjectList() {
             deleteProject={() => {
               props.deleteProject(props.project._id);
             }}
-            deleteProject={deleteProject}
+            //deleteProject={deleteProject}
           />
         </div>
       );
