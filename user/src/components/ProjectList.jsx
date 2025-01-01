@@ -176,10 +176,10 @@ export default function ProjectList() {
           <Project
             key={project._id}
             project={project}
-            deleteProject={() => {
-              props.deleteProject(props.project._id);
-            }}
-            //deleteProject={deleteProject}
+            // deleteProject={() => {
+            //   props.deleteProject(props.project._id);
+            // }}
+            deleteProject={deleteProject}
           />
         </tbody>
       );
