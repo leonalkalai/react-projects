@@ -50,7 +50,7 @@ export default function Project() {
       if (!id) return; // if id doesn't exist return
       setIsNewProject(false); // else if update project set NewProject state as false because it is not a new project
       try {
-        const URL_ID = `${URL}/project/${params.id.toString()}`; // get the id from the params object and convert it to string
+        const URL_ID = `${URL}/${params.id.toString()}`; // get the id from the params object and convert it to string
         const response = await fetch(URL_ID); // await to fetch the url id
         // check if response is ok
         if (!response.ok) {
@@ -102,7 +102,7 @@ export default function Project() {
       let response; // create a response object
       if (isNewProject) {
         // if creating a new project post to /project
-        const POST_URL = `${URL}/project`;
+        const POST_URL = `${URL}`;
         response = await fetch(POST_URL, {
           method: "POST", // add post method // [ https://www.freecodecamp.org/news/javascript-post-request-how-to-send-an-http-post-request-in-js/ ]
           headers: {
@@ -112,7 +112,7 @@ export default function Project() {
         }); // await to fetch the url
       } else {
         // if updating a project patch to /project/:id
-        const PATCH_URL = `${URL}/project/${params.id}`;
+        const PATCH_URL = `${URL}/${params.id}`;
         response = await fetch(PATCH_URL, {
           method: "PATCH", // add patch method
           headers: {
