@@ -60,7 +60,7 @@ const Project = (props) => {
                     border border-input
                     bg-background hover:bg-slate-100
                     h-9 rounded-md px-3"
-            to={`/edit/${props.project._id}`}
+            to={`/react-projects/edit/${props.project._id}`}
           >
             Edit
           </Link>
