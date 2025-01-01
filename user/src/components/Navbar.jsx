@@ -29,7 +29,7 @@ export default function Navbar() {
           border border-input
           bg-background hover:bg-slate-100
           h-9 rounded-md px-3"
-          to="/create"
+          to="./create"
         >
           Create Project
         </NavLink>

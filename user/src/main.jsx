@@ -19,7 +19,7 @@ const browserRouterPath = githubpagesPath; // choose the path
 const router = createBrowserRouter([
   // show all projects route
   {
-    path: `${browserRouterPath}` /*  root path */,
+    path: `${browserRouterPath}/` /*  root path */,
     element: <App />, // main app
     children: [
       {
@@ -62,7 +62,7 @@ ReactDOM.createRoot(
   // The render() method is then called to define the React component that should be rendered [ https://www.w3schools.com/react/react_render.asp ]
   // show errors for common bugs components during development [ https://react.dev/reference/react/StrictMode ]
   <React.StrictMode>
-    <RouterProvider router={router} basename="/react-projects" />
+    <RouterProvider router={router} />
     {/*  set the base url to /react-projects 
     [ https://v5.reactrouter.com/web/api/BrowserRouter/basename-string ]
     The base URL for all locations. 
