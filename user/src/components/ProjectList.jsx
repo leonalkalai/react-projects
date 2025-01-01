@@ -132,7 +132,7 @@ export default function ProjectList() {
     }
     getProjects(); // get projects on load or when projects change
     return;
-  }, []); // repeat when new project is added or project is deleted - the length of projects changes
+  }, [projects]); // repeat when new project is added or project is deleted - the length of projects changes
 
   // delete project method start
   async function deleteProject(id) {
