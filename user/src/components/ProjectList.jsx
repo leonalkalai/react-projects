@@ -123,7 +123,6 @@ export default function ProjectList() {
         }
         const fetchedProjects = await response.json(); // store the data
         setProjects(JSON.parse(fetchedProjects.data.body)); // set the projects state to the new data
-        console.log(`useEffect: ${projects} ${typeof projects}`);
       } catch (error) {
         // catch error
         const message = error.message;
@@ -131,6 +130,7 @@ export default function ProjectList() {
       }
     }
     getProjects(); // get projects on load or when projects change
+    console.log(`useEffect: ${projects} ${typeof projects}`);
     //return;
   }, [projects]); // repeat when new project is added or project is deleted - the length of projects changes
 
