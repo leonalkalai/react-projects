@@ -13,18 +13,18 @@ import "./index.css"; // import css
 
 // router setup [ https://blog.logrocket.com/react-router-dom-tutorial-examples/ ]
 const localhostPath = "/"; // select this if localhost
-const githubpagesPath = "/react-projects/projects"; // select this if hosted on github pages
+const githubpagesPath = "/react-projects/"; // select this if hosted on github pages
 const browserRouterPath = githubpagesPath; // choose the path
 
 const router = createBrowserRouter([
   // show all projects route
   {
-    path: `${browserRouterPath}/` /*  root path */,
+    path: `${browserRouterPath}projects/` /*  root path */,
     element: <App />, // main app
     children: [
       {
         // children of main app
-        path: `${browserRouterPath}/`, // root path
+        path: ``, // root path
         element: <ProjectList />, // all of the projects
       },
     ],
