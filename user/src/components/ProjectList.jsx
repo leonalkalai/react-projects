@@ -101,7 +101,7 @@ const URL = netlifyPath; // select the netlify custom API
 
 export default function ProjectList() {
   const [projects, setProjects] = useState([]); // set usestate for project list [ https://react.dev/learn/updating-arrays-in-state ]
-  const GET_URL = `${URL}/project`;
+  const GET_URL = `${URL}/`;
   // Connect to the database [ https://react.dev/reference/react/useEffect#connecting-to-an-external-system ]
   useEffect(() => {
     async function getProjects() {
@@ -137,7 +137,7 @@ export default function ProjectList() {
   // delete project method start
   async function deleteProject(id) {
     // [ https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch ]
-    const DELETE_URL = `${URL}/project/${id}`;
+    const DELETE_URL = `${URL}/${id}`;
     const response = await fetch(DELETE_URL, {
       method: "DELETE", // add delete method
     }); // await to fetch the url
