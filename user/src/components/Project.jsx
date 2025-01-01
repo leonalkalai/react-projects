@@ -134,15 +134,17 @@ export default function Project() {
     } finally {
       // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch
       // reset form values for next use
-      setForm({
-        name: "",
-        category: "",
-        description: "",
-        tech_stack: "",
-        repository: "",
-        url: "",
-        image: "",
-      });
+      if (isNewProject) {
+        setForm({
+          name: "",
+          category: "",
+          description: "",
+          tech_stack: "",
+          repository: "",
+          url: "",
+          image: "",
+        });
+      }
       navigate(`${homePath}`); // return home
     }
   }
@@ -228,7 +230,7 @@ export default function Project() {
                       type="radio"
                       value="HTML5"
                       className="h-4 w-4 border-slate-300 text-slate-600 focus:ring-slate-600 cursor-pointer"
-                      checked={form.level === "HTML5"}
+                      checked={form.category === "HTML5"}
                       onChange={(e) => updateForm({ category: e.target.value })} // update category input value
                     />
                     <label
