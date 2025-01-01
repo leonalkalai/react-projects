@@ -13,7 +13,7 @@ import "./index.css"; // import css
 
 // router setup [ https://blog.logrocket.com/react-router-dom-tutorial-examples/ ]
 const localhostPath = "/"; // select this if localhost
-const githubpagesPath = "/react-projects"; // select this if hosted on github pages
+const githubpagesPath = "./"; // select this if hosted on github pages
 const browserRouterPath = githubpagesPath; // choose the path
 
 const router = createBrowserRouter([
