@@ -24,7 +24,7 @@ const router = createBrowserRouter([
     children: [
       {
         // children of main app
-        path: "", // root path
+        path: `${browserRouterPath}projects/`, // root path
         element: <ProjectList />, // all of the projects
       },
     ],
@@ -36,7 +36,7 @@ const router = createBrowserRouter([
     children: [
       {
         // children of main app
-        path: "",
+        path: `${browserRouterPath}projects/edit/:id`,
         element: <Project />, // single project
       },
     ],
@@ -48,7 +48,7 @@ const router = createBrowserRouter([
     children: [
       {
         // children of main app
-        path: "",
+        path: `${browserRouterPath}projects/create`,
         element: <Project />, // single project
       },
     ],
