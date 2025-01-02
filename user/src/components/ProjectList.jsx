@@ -131,9 +131,9 @@ export default function ProjectList() {
       }
     }
     getProjects(); // get projects on load or when projects change
-    console.log(`useEffect: ${projects} ${typeof projects}`);
+    console.log(`useEffect: ${JSON.parse(projects).length}`);
     //return;
-  }, [projects]); // repeat when new project is added or project is deleted - the length of projects changes
+  }, [projects.length]); // repeat when new project is added or project is deleted - the length of projects changes
 
   // delete project method start
   async function deleteProject(id) {
