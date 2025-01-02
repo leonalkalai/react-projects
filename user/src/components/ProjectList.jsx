@@ -21,6 +21,7 @@ const categories = [
 
 // project categories and buttons start
 const Project = (props) => {
+  const baseURL = "/react-projects/projects";
   {
     /* https://tailwindcss.com/docs/hover-focus-and-other-states#data-attributes  */
   }
@@ -60,7 +61,7 @@ const Project = (props) => {
                     border border-input
                     bg-background hover:bg-slate-100
                     h-9 rounded-md px-3"
-            to={`/react-projects/edit/${props.project._id}`}
+            to={`${baseURL}/edit/${props.project._id}`}
           >
             Edit
           </Link>
