@@ -24,31 +24,31 @@ const router = createBrowserRouter([
     children: [
       {
         // children of main app
-        path: ``, // root path
+        path: "", // root path
         element: <ProjectList />, // all of the projects
       },
     ],
   },
   // edit project route
   {
-    path: `${browserRouterPath}/edit/:id`, // edit path with added id
+    path: `${browserRouterPath}projects/edit/:id`, // edit path with added id
     element: <App />, // main app
     children: [
       {
         // children of main app
-        path: ``,
+        path: "",
         element: <Project />, // single project
       },
     ],
   },
   // create project route
   {
-    path: `${browserRouterPath}/create`, // create path
+    path: `${browserRouterPath}projects/create`, // create path
     element: <App />, // main app
     children: [
       {
         // children of main app
-        path: ``,
+        path: "",
         element: <Project />, // single project
       },
     ],
