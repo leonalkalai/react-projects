@@ -278,7 +278,9 @@ export default function Project() {
                           className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-slate-900 placeholder:text-slate-400 focus:ring-0 sm:text-sm sm:leading-6"
                           placeholder={`Project ${category}`}
                           value={form[category] || ""}
-                          onChange={(e) => updateForm({ name: e.target.value })} // update name input value
+                          onChange={(e) =>
+                            updateForm({ [category]: e.target.value })
+                          } // update name input value
                         />
                       )}
                     </div>
