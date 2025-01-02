@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "/react-projects/projects",
+  "homepage": "/react-projects",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
