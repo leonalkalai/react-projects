@@ -8,6 +8,42 @@ import { useParams, useNavigate } from "react-router-dom";
 // useParams - object of key/value pairs of URL parameters. [ https://v5.reactrouter.com/web/api/Hooks/useparams ]
 // useNavigate - hook go to the specific URL, and forward or backward pages  [ https://www.geeksforgeeks.org/reactjs-usenavigate-hook/ ]
 
+// project categories array
+const categories = [
+  "name",
+  "category",
+  "description",
+  "tech_stack",
+  "repository",
+  "url",
+  "image",
+];
+
+const technologies = [
+  "HTML5",
+  "CSS3",
+  "JavaScript",
+  "React.js",
+  "Bootstrap",
+  "Tailwind CSS",
+  "Sass/SCSS",
+  "Node.js",
+  "PHP",
+  "Laravel",
+  "MySQL",
+  "MongoDB",
+  "Express.js",
+  "Netlify Functions",
+  "Git",
+  "GitHub",
+  "Visual Studio Code",
+  "Vite",
+  "Chrome DevTools",
+  "Postman",
+  "Netlify",
+  "Next.js",
+];
+
 // Create - Update Project start
 export default function Project() {
   // set state empty value for each category
@@ -153,7 +189,7 @@ export default function Project() {
   //  start user input form
   return (
     <>
-      <h3 className="text-lg font-semibold p-4">Create/Update Project</h3>
+      <h3 className="text-lg font-semibold p-4">Create Project</h3>
       <form
         onSubmit={onSubmit} // [ https://react.dev/reference/react-dom/components/input#reading-the-input-values-when-submitting-a-form ]
         className="border rounded-lg overflow-hidden p-4"
@@ -169,112 +205,89 @@ export default function Project() {
             </p>
           </div>
 
-          <div className="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8 ">
-            <div className="sm:col-span-4">
-              <label
-                htmlFor="name"
-                className="block text-sm font-medium leading-6 text-slate-900"
-              >
-                Name
-              </label>
-              <div className="mt-2">
-                <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-slate-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                  <input
-                    type="text"
-                    name="name"
-                    id="name"
-                    className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-slate-900 placeholder:text-slate-400 focus:ring-0 sm:text-sm sm:leading-6"
-                    placeholder="Project name"
-                    value={form.name}
-                    onChange={(e) => updateForm({ name: e.target.value })} // update name input value
-                  />
-                </div>
-              </div>
-            </div>
+          <div className="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8">
+            {categories &&
+              categories.map((category) => (
+                <div key={category} className="sm:col-span-4">
+                  <label
+                    htmlFor={category}
+                    className="block text-sm font-medium leading-6 text-slate-900"
+                  >
+                    {category}
+                  </label>
+                  <div className="mt-2">
+                    <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-slate-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                      {category === "category" ? (
+                        <div>
+                          <p>Select Project technology</p>
+                          <fieldset className="mt-4">
+                            <legend className="sr-only">Technology</legend>
 
-            <div className="sm:col-span-4">
-              <label
-                htmlFor="description"
-                className="block text-sm font-medium leading-6 text-slate-900"
-              >
-                Description
-              </label>
-              <div className="mt-2">
-                <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-slate-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                  <textarea
-                    rows="10"
-                    cols="50"
-                    type="text"
-                    name="description"
-                    id="description"
-                    className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-slate-900 placeholder:text-slate-400 focus:ring-0 sm:text-sm sm:leading-6"
-                    placeholder="Project description"
-                    value={form.description}
-                    onChange={(e) =>
-                      updateForm({ description: e.target.value })
-                    } // update description input value
-                  ></textarea>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <p>Select Project category</p>
-              <fieldset className="mt-4">
-                <legend className="sr-only">Category</legend>
-                <div className="space-y-4 sm:flex sm:items-center sm:space-x-10 sm:space-y-0">
-                  <div className="flex items-center">
-                    <input
-                      id="CategoryHTML"
-                      name="category"
-                      type="radio"
-                      value="HTML5"
-                      className="h-4 w-4 border-slate-300 text-slate-600 focus:ring-slate-600 cursor-pointer"
-                      checked={form.category === "HTML5"}
-                      onChange={(e) => updateForm({ category: e.target.value })} // update category input value
-                    />
-                    <label
-                      htmlFor="CategoryHTML"
-                      className="ml-3 block text-sm font-medium leading-6 text-slate-900 mr-4"
-                    >
-                      HTML5
-                    </label>
-                    <input
-                      id="CategoryCSS"
-                      name="category"
-                      type="radio"
-                      value="CSS3"
-                      className="h-4 w-4 border-slate-300 text-slate-600 focus:ring-slate-600 cursor-pointer"
-                      checked={form.category === "CSS3"}
-                      onChange={(e) => updateForm({ category: e.target.value })}
-                    />
-                    <label
-                      htmlFor="categoryCSS"
-                      className="ml-3 block text-sm font-medium leading-6 text-slate-900 mr-4"
-                    >
-                      CSS3
-                    </label>
-                    <input
-                      id="CategoryJavascript"
-                      name="category"
-                      type="radio"
-                      value="Javascript"
-                      className="h-4 w-4 border-slate-300 text-slate-600 focus:ring-slate-600 cursor-pointer"
-                      checked={form.category === "Javascript"}
-                      onChange={(e) => updateForm({ category: e.target.value })} // update description form input
-                    />
-                    <label
-                      htmlFor="CategoryJavascript"
-                      className="ml-3 block text-sm font-medium leading-6 text-slate-900 mr-4"
-                    >
-                      Javascript
-                    </label>
+                            <div className="space-y-4 sm:flex sm:items-center sm:space-x-10 sm:space-y-0">
+                              <div className="flex items-center">
+                                {technologies &&
+                                  technologies.map((technology) => (
+                                    <div
+                                      key={technology}
+                                      className="flex items-center"
+                                    >
+                                      <input
+                                        id={`Category${technology}`}
+                                        name="category"
+                                        type="radio"
+                                        value={technology}
+                                        className="h-4 w-4 border-slate-300 text-slate-600 focus:ring-slate-600 cursor-pointer"
+                                        checked={form.category === technology}
+                                        onChange={(e) =>
+                                          updateForm({
+                                            category: e.target.value,
+                                          })
+                                        } // update category input value
+                                      />
+                                      <label
+                                        htmlFor={`Category${technology}`}
+                                        className="ml-3 block text-sm font-medium leading-6 text-slate-900 mr-4"
+                                      >
+                                        {technology}
+                                      </label>
+                                    </div>
+                                  ))}
+                              </div>
+                            </div>
+                          </fieldset>
+                        </div>
+                      ) : category === "description" ? (
+                        <textarea
+                          rows="10"
+                          cols="50"
+                          type="text"
+                          name="description"
+                          id="description"
+                          className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-slate-900 placeholder:text-slate-400 focus:ring-0 sm:text-sm sm:leading-6"
+                          placeholder="Project description"
+                          value={form.description || ""}
+                          onChange={(e) =>
+                            updateForm({ description: e.target.value })
+                          } // update description input value
+                        />
+                      ) : (
+                        <input
+                          type="text"
+                          name={category}
+                          id={category}
+                          className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-slate-900 placeholder:text-slate-400 focus:ring-0 sm:text-sm sm:leading-6"
+                          placeholder={`Project ${category}`}
+                          value={form[category] || ""}
+                          onChange={(e) => updateForm({ name: e.target.value })} // update name input value
+                        />
+                      )}
+                    </div>
                   </div>
                 </div>
-              </fieldset>
-            </div>
+              ))}
           </div>
         </div>
+
         <input
           type="submit"
           value="Save Project"

@@ -63,7 +63,7 @@ const Project = (props) => {
                     h-9 rounded-md px-3"
             to={`${baseURL}/edit/${props.project._id}`}
           >
-            Edit
+            Update
           </Link>
           <button
             className="
