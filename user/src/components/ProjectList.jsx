@@ -102,7 +102,7 @@ const URL = netlifyPath; // select the netlify custom API
 
 export default function ProjectList() {
   const [projects, setProjects] = useState([]); // set usestate for project list [ https://react.dev/learn/updating-arrays-in-state ]
-  const GET_URL = `${URL}/`;
+  const GET_URL = `${URL}`;
   // Connect to the database [ https://react.dev/reference/react/useEffect#connecting-to-an-external-system ]
   useEffect(() => {
     async function getProjects() {
