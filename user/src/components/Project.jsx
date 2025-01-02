@@ -102,7 +102,7 @@ export default function Project() {
       let response; // create a response object
       if (isNewProject) {
         // if creating a new project post to /project
-        const POST_URL = `${URL}`;
+        const POST_URL = `${URL}/create`;
         response = await fetch(POST_URL, {
           method: "POST", // add post method // [ https://www.freecodecamp.org/news/javascript-post-request-how-to-send-an-http-post-request-in-js/ ]
           headers: {
