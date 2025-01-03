@@ -235,11 +235,13 @@ export default function Project() {
                 .map((category) => (
                   <div
                     key={category}
-                    className={`sm:col-span-4 bg-${category} bg-cover bg-center`}
+                    className={`sm:col-span-4 bg-cover bg-center`}
                     style={{
                       backgroundImage: `url(${category})`,
                     }}
-                  ></div>
+                  >
+                    ${category}
+                  </div>
                 ))}
           </div>
 
