@@ -239,7 +239,7 @@ export default function Project() {
                       backgroundImage: `url(${form[category]})`,
                     }}
                   >
-                    {category}
+                    {form[category]}
                   </div>
                 ))}
           </div>
