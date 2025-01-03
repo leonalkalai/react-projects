@@ -63,7 +63,7 @@ const Project = (props) => {
                     h-9 rounded-md px-3"
             to={`${baseURL}/edit/${props.project._id}`}
           >
-            Update
+            Edit
           </Link>
           <button
             className="
@@ -123,6 +123,8 @@ export default function ProjectList() {
           );
         }
         const fetchedProjects = await response.json(); // store the data
+        console.log(fetchedProjects);
+        // console.log(`useEffect: ${JSON.parse(projects).length}`);
         setProjects(JSON.parse(fetchedProjects.data.body)); // set the projects state to the new data
       } catch (error) {
         // catch error
@@ -131,9 +133,9 @@ export default function ProjectList() {
       }
     }
     getProjects(); // get projects on load or when projects change
-    console.log(`useEffect: ${JSON.parse(projects).length}`);
+
     //return;
-  }, [projects.length]); // repeat when new project is added or project is deleted - the length of projects changes
+  }, []); // repeat when new project is added or project is deleted - the length of projects changes
 
   // delete project method start
   async function deleteProject(id) {

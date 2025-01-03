@@ -253,17 +253,17 @@ export default function Project() {
             <div>
               <p>Select Project technology</p>
               <fieldset className="mt-4">
-                <legend className="sr-only">Technology</legend>
+                <legend className="sr-only">Select Technologies</legend>
 
                 <div className="space-y-4 sm:flex sm:items-center sm:space-x-10 sm:space-y-0">
-                  <div className="flex items-center">
+                  <div className="flex flex-wrap items-center">
                     {technologies &&
                       technologies.map((technology) => (
                         <div key={technology} className="flex items-center">
                           <input
                             id={`Category${technology}`}
                             name="category"
-                            type="radio"
+                            type="checkbox"
                             value={technology}
                             className="h-4 w-4 border-slate-300 text-slate-600 focus:ring-slate-600 cursor-pointer"
                             checked={form.category === technology}
