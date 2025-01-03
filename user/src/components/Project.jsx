@@ -127,7 +127,7 @@ export default function Project() {
     exclude the falsy values [ https://mikebifulco.com/posts/javascript-filter-boolean ]  
   */
   const handleOnChangeCheckbox = (checkboxIndex) => {
-    const updatedCheckedState = checkedState.map((checked) =>
+    const updatedCheckedState = checkedState.map((checked, index) =>
       index === checkboxIndex ? !checked : checked
     );
 
