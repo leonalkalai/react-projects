@@ -115,7 +115,6 @@ export default function Project() {
       }
     }
     fetchProject(); // get project data
-    return;
   }, [params.id, navigate]); // repeat for a project id change - navigation change
   // end useEffect
 
@@ -237,10 +236,10 @@ export default function Project() {
                     key={category}
                     className={`sm:col-span-4 bg-cover bg-center`}
                     style={{
-                      backgroundImage: `url(${category})`,
+                      backgroundImage: `url(${form[category]})`,
                     }}
                   >
-                    ${category}
+                    {category}
                   </div>
                 ))}
           </div>
