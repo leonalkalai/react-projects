@@ -229,11 +229,23 @@ export default function Project() {
               A collection of the projects i have created over the years
               learning about several technologies.
             </p>
+            {categories && categories
+              .filter((category) => category === "image")
+              .map((category) => (
+                <div key={category} 
+                  className={`sm:col-span-4 bg-${category} bg-cover bg-center`}
+                  style={{
+                    backgroundImage: `url(${category})`,
+                  }}
+                >
+                </div>
+              ))}
           </div>
 
           <div className="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8">
-            {categories &&
-              categories.map((category) => (
+            {categories && categories
+              .filter((category) => category !== "image")
+              .map((category) => (
                 <div key={category} className="sm:col-span-4">
                   <label
                     htmlFor={category}
@@ -292,12 +304,12 @@ export default function Project() {
                             type="checkbox"
                             value={technology}
                             className="h-4 w-4 border-slate-300 text-slate-600 focus:ring-slate-600 cursor-pointer"
-                            checked={checkedState[index]}
+                            checked=${checkedState[index] ? 'bg-purple-950 text-fuchsia-50' : ''}
                             onChange={() => handleOnChangeCheckbox(index)}
                           />
                           <label
                             htmlFor={technology}
-                            className="ml-3 block text-sm font-medium leading-6 text-slate-900 mr-4"
+                            className={ `ml-3 block text-sm font-medium leading-6 mr-4 ${checkedState[index] ? 'bg-purple-950 text-fuchsia-50' : 'text-slate-900'} `}
                           >
                             {technology}
                           </label>

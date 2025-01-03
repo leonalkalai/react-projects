@@ -16,7 +16,7 @@ export default function Navbar() {
   return (
     <>
       <nav className="flex justify-between items-center mb-6">
-        <NavLink to="./">
+        <NavLink to="../">
           <img className="h-10 min-h-28 inline" src={Logo} alt="logo" />
         </NavLink>
         <NavLink
