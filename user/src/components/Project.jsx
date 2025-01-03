@@ -59,6 +59,11 @@ export default function Project() {
 
   const [isNewProject, setIsNewProject] = useState(true); // set a state to check if new project
 
+  // set check status for checkbox tech stack [ https://www.freecodecamp.org/news/how-to-work-with-multiple-checkboxes-in-react/ ]
+  const [checkedState, setCheckedState] = useState(
+    Array(technologies.length).fill(false) // create a new array for all checkboxs checkState with the length of the technologies array and fill it with false values
+  );
+
   const params = useParams(); // get url params
 
   const navigate = useNavigate(); // get url navigation history
@@ -114,12 +119,35 @@ export default function Project() {
   }, [params.id, navigate]); // repeat for a project id change - navigation change
   // end useEffect
 
+
+  // checkboxes update handler
+  const handleOnChangeCheckbox = (checkboxIndex) => {
+    // parameter checkbox index
+    const updatedCheckedState = checkedState.map(
+      (
+        checked,
+        index // map over the checkboxes
+      ) => (index === checkboxIndex ? !checked : checked) // if the index is same with the checkbox index  toggle between checked and not checked
+    );
+
+    setCheckedState(updatedCheckedState);
+
+    // get the selected technologies
+    const selectedTechnologies = updatedCheckedState
+    .map((checked, index) => checked ? technologies[index]) // map over the selected technologies and return the technology if it is checked else return undefined
+    .filter(Boolean); // exclude the falsy values [ https://mikebifulco.com/posts/javascript-filter-boolean ] 
+
+    updateForm({ tech_stack: selectedTechnologies });
+  };
+
+
   //  start method to update project data
   function updateForm(currentValue) {
     /* get previous value to use it for next render 
         [ https://www.geeksforgeeks.org/how-to-get-previous-state-in-reactjs-functional-component/ ]
         https://react.dev/reference/react/useState#updating-state-based-on-the-previous-state
         */
+
     return setForm((previousValue) => {
       return {
         ...previousValue,
@@ -258,23 +286,21 @@ export default function Project() {
                 <div className="space-y-4 sm:flex sm:items-center sm:space-x-10 sm:space-y-0">
                   <div className="flex flex-wrap items-center">
                     {technologies &&
-                      technologies.map((technology) => (
+                      technologies.map((technology, index) => (
                         <div key={technology} className="flex items-center">
                           <input
-                            id={`Category${technology}`}
-                            name="category"
+                            id={technology}
+                            name="tech_stack"
                             type="checkbox"
                             value={technology}
                             className="h-4 w-4 border-slate-300 text-slate-600 focus:ring-slate-600 cursor-pointer"
-                            checked={form.category === technology}
+                            checked={checkedState[index]}
                             onChange={(e) =>
-                              updateForm({
-                                category: e.target.value,
-                              })
+                              onChange={() => handleOnChangeCheckbox(index)} 
                             }
                           />
                           <label
-                            htmlFor={`Category${technology}`}
+                            htmlFor={technology}
                             className="ml-3 block text-sm font-medium leading-6 text-slate-900 mr-4"
                           >
                             {technology}
