@@ -194,7 +194,9 @@ export default function Project() {
         onSubmit={onSubmit} // [ https://react.dev/reference/react-dom/components/input#reading-the-input-values-when-submitting-a-form ]
         className="border rounded-lg overflow-hidden p-4"
       >
+        {/* start container */}
         <div className="grid grid-cols-1 gap-x-8 gap-y-10 border-b border-slate-900/10 pb-12 md:grid-cols-2">
+          {/* start header */}
           <div>
             <h2 className="text-base font-semibold leading-7 text-slate-900">
               Project Info
@@ -204,10 +206,14 @@ export default function Project() {
               learning about several technologies.
             </p>
           </div>
+          {/* end header */}
 
+          {/* start body */}
           <div className="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8">
+            {/* start categories.map */}
             {categories &&
               categories.map((category) => (
+                {/* start sm:col-span-4 */}
                 <div key={category} className="sm:col-span-4">
                   <label
                     htmlFor={category}
@@ -215,48 +221,11 @@ export default function Project() {
                   >
                     {category}
                   </label>
+                  {/* start mt-2 */}
                   <div className="mt-2">
+                    {/* start flex round */}
                     <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-slate-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                      {category === "category" ? (
-                        <div>
-                          <p>Select Project technology</p>
-                          <fieldset className="mt-4">
-                            <legend className="sr-only">Technology</legend>
-
-                            <div className="space-y-4 sm:flex sm:items-center sm:space-x-10 sm:space-y-0">
-                              <div className="flex items-center">
-                                {technologies &&
-                                  technologies.map((technology) => (
-                                    <div
-                                      key={technology}
-                                      className="flex items-center"
-                                    >
-                                      <input
-                                        id={`Category${technology}`}
-                                        name="category"
-                                        type="radio"
-                                        value={technology}
-                                        className="h-4 w-4 border-slate-300 text-slate-600 focus:ring-slate-600 cursor-pointer"
-                                        checked={form.category === technology}
-                                        onChange={(e) =>
-                                          updateForm({
-                                            category: e.target.value,
-                                          })
-                                        } // update category input value
-                                      />
-                                      <label
-                                        htmlFor={`Category${technology}`}
-                                        className="ml-3 block text-sm font-medium leading-6 text-slate-900 mr-4"
-                                      >
-                                        {technology}
-                                      </label>
-                                    </div>
-                                  ))}
-                              </div>
-                            </div>
-                          </fieldset>
-                        </div>
-                      ) : category === "description" ? (
+                      {category === "description" ? (
                         <textarea
                           rows="10"
                           cols="50"
@@ -284,12 +253,57 @@ export default function Project() {
                         />
                       )}
                     </div>
+                    {/* end flex round */}
+                  </div>
+                  {/* end mt-2 */}
+                </div>
+                {/* end sm:col-span-4 */}
+            ))}
+            {/* end categories.map */}
+            
+            {/* start fieldsets container */}
+            <div>
+              <p>Select Project technology</p>
+              <fieldset className="mt-4">
+                <legend className="sr-only">Technology</legend>
+
+                <div className="space-y-4 sm:flex sm:items-center sm:space-x-10 sm:space-y-0">
+                  <div className="flex items-center">
+                    {/* start technologies.map */}
+                    { technologies &&
+                      technologies.map((technology) => (
+                        <div key={technology} className="flex items-center">
+                          <input
+                            id={`Category${technology}`}
+                            name="category"
+                            type="radio"
+                            value={technology}
+                            className="h-4 w-4 border-slate-300 text-slate-600 focus:ring-slate-600 cursor-pointer"
+                            checked={form.category === technology}
+                            onChange={(e) =>
+                              updateForm({
+                                category: e.target.value,
+                              })
+                            } // update category input value
+                          />
+                          <label
+                            htmlFor={`Category${technology}`}
+                            className="ml-3 block text-sm font-medium leading-6 text-slate-900 mr-4"
+                          >
+                            {technology}
+                          </label>
+                        </div>
+                      ))}
+                      {/* end technologies.map */}
                   </div>
                 </div>
-              ))}
+              </fieldset>
+            </div>
+            {/* end fieldsets container */}
           </div>
+          {/* end body */}
         </div>
-
+        {/* end container */}
         <input
           type="submit"
           value="Save Project"
