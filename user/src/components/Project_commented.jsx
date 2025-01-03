@@ -194,7 +194,9 @@ export default function Project() {
         onSubmit={onSubmit} // [ https://react.dev/reference/react-dom/components/input#reading-the-input-values-when-submitting-a-form ]
         className="border rounded-lg overflow-hidden p-4"
       >
+        {/* start container */}
         <div className="grid grid-cols-1 gap-x-8 gap-y-10 border-b border-slate-900/10 pb-12 md:grid-cols-2">
+          {/* start header */}
           <div>
             <h2 className="text-base font-semibold leading-7 text-slate-900">
               Project Info
@@ -204,10 +206,14 @@ export default function Project() {
               learning about several technologies.
             </p>
           </div>
+          {/* end header */}
 
+          {/* start body */}
           <div className="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8">
+            {/* start categories.map */}
             {categories &&
               categories.map((category) => (
+                {/* start sm:col-span-4 */}
                 <div key={category} className="sm:col-span-4">
                   <label
                     htmlFor={category}
@@ -215,8 +221,9 @@ export default function Project() {
                   >
                     {category}
                   </label>
-
+                  {/* start mt-2 */}
                   <div className="mt-2">
+                    {/* start flex round */}
                     <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-slate-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
                       {category === "description" ? (
                         <textarea
@@ -230,7 +237,7 @@ export default function Project() {
                           value={form.description || ""}
                           onChange={(e) =>
                             updateForm({ description: e.target.value })
-                          }
+                          } 
                         />
                       ) : (
                         <input
@@ -246,10 +253,15 @@ export default function Project() {
                         />
                       )}
                     </div>
+                    {/* end flex round */}
                   </div>
+                  {/* end mt-2 */}
                 </div>
-              ))}
-
+                {/* end sm:col-span-4 */}
+            ))}
+            {/* end categories.map */}
+            
+            {/* start fieldsets container */}
             <div>
               <p>Select Project technology</p>
               <fieldset className="mt-4">
@@ -257,7 +269,8 @@ export default function Project() {
 
                 <div className="space-y-4 sm:flex sm:items-center sm:space-x-10 sm:space-y-0">
                   <div className="flex items-center">
-                    {technologies &&
+                    {/* start technologies.map */}
+                    { technologies &&
                       technologies.map((technology) => (
                         <div key={technology} className="flex items-center">
                           <input
@@ -271,7 +284,7 @@ export default function Project() {
                               updateForm({
                                 category: e.target.value,
                               })
-                            }
+                            }    
                           />
                           <label
                             htmlFor={`Category${technology}`}
@@ -281,13 +294,16 @@ export default function Project() {
                           </label>
                         </div>
                       ))}
+                      {/* end technologies.map */}
                   </div>
                 </div>
               </fieldset>
             </div>
+            {/* end fieldsets container */}
           </div>
+          {/* end body */}
         </div>
-
+        {/* end container */}
         <input
           type="submit"
           value="Save Project"
