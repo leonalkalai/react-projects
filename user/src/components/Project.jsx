@@ -229,64 +229,66 @@ export default function Project() {
               A collection of the projects i have created over the years
               learning about several technologies.
             </p>
-            {categories && categories
-              .filter((category) => category === "image")
-              .map((category) => (
-                <div key={category} 
-                  className={`sm:col-span-4 bg-${category} bg-cover bg-center`}
-                  style={{
-                    backgroundImage: `url(${category})`,
-                  }}
-                >
-                </div>
-              ))}
+            {categories &&
+              categories
+                .filter((category) => category === "image")
+                .map((category) => (
+                  <div
+                    key={category}
+                    className={`sm:col-span-4 bg-${category} bg-cover bg-center`}
+                    style={{
+                      backgroundImage: `url(${category})`,
+                    }}
+                  ></div>
+                ))}
           </div>
 
           <div className="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8">
-            {categories && categories
-              .filter((category) => category !== "image")
-              .map((category) => (
-                <div key={category} className="sm:col-span-4">
-                  <label
-                    htmlFor={category}
-                    className="block text-sm font-medium leading-6 text-slate-900"
-                  >
-                    {category}
-                  </label>
+            {categories &&
+              categories
+                .filter((category) => category !== "image")
+                .map((category) => (
+                  <div key={category} className="sm:col-span-4">
+                    <label
+                      htmlFor={category}
+                      className="block text-sm font-medium leading-6 text-slate-900"
+                    >
+                      {category}
+                    </label>
 
-                  <div className="mt-2">
-                    <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-slate-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
-                      {category === "description" ? (
-                        <textarea
-                          rows="10"
-                          cols="50"
-                          type="text"
-                          name="description"
-                          id="description"
-                          className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-slate-900 placeholder:text-slate-400 focus:ring-0 sm:text-sm sm:leading-6"
-                          placeholder="Project description"
-                          value={form.description || ""}
-                          onChange={(e) =>
-                            updateForm({ description: e.target.value })
-                          }
-                        />
-                      ) : (
-                        <input
-                          type="text"
-                          name={category}
-                          id={category}
-                          className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-slate-900 placeholder:text-slate-400 focus:ring-0 sm:text-sm sm:leading-6"
-                          placeholder={`Project ${category}`}
-                          value={form[category] || ""}
-                          onChange={(e) =>
-                            updateForm({ [category]: e.target.value })
-                          }
-                        />
-                      )}
+                    <div className="mt-2">
+                      <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-slate-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                        {category === "description" ? (
+                          <textarea
+                            rows="10"
+                            cols="50"
+                            type="text"
+                            name="description"
+                            id="description"
+                            className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-slate-900 placeholder:text-slate-400 focus:ring-0 sm:text-sm sm:leading-6"
+                            placeholder="Project description"
+                            value={form.description || ""}
+                            onChange={(e) =>
+                              updateForm({ description: e.target.value })
+                            }
+                          />
+                        ) : (
+                          <input
+                            type="text"
+                            name={category}
+                            id={category}
+                            className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-slate-900 placeholder:text-slate-400 focus:ring-0 sm:text-sm sm:leading-6"
+                            placeholder={`Project ${category}`}
+                            value={form[category] || ""}
+                            onChange={(e) =>
+                              updateForm({ [category]: e.target.value })
+                            }
+                          />
+                        )}
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
 
             <div>
               <p>Select Project technology</p>
@@ -304,12 +306,20 @@ export default function Project() {
                             type="checkbox"
                             value={technology}
                             className="h-4 w-4 border-slate-300 text-slate-600 focus:ring-slate-600 cursor-pointer"
-                            checked=${checkedState[index] ? 'bg-purple-950 text-fuchsia-50' : ''}
+                            checked={
+                              checkedState[index]
+                                ? "bg-purple-950 text-fuchsia-50"
+                                : ""
+                            }
                             onChange={() => handleOnChangeCheckbox(index)}
                           />
                           <label
                             htmlFor={technology}
-                            className={ `ml-3 block text-sm font-medium leading-6 mr-4 ${checkedState[index] ? 'bg-purple-950 text-fuchsia-50' : 'text-slate-900'} `}
+                            className={`ml-3 block text-sm font-medium leading-6 mr-4 ${
+                              checkedState[index]
+                                ? "bg-purple-950 text-fuchsia-50"
+                                : "text-slate-900"
+                            } `}
                           >
                             {technology}
                           </label>
