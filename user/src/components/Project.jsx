@@ -119,27 +119,25 @@ export default function Project() {
   }, [params.id, navigate]); // repeat for a project id change - navigation change
   // end useEffect
 
-
-  // checkboxes update handler
+  /*  checkboxes update handler
+    parameter checkbox index
+    index map over the checkboxes and if the index is same with the checkbox index  toggle between checked and not checked
+    get the selected technologies
+    map over the selected technologies and return the technology if it is checked else return undefined
+    exclude the falsy values [ https://mikebifulco.com/posts/javascript-filter-boolean ]  
+  */
   const handleOnChangeCheckbox = (checkboxIndex) => {
-    // parameter checkbox index
-    const updatedCheckedState = checkedState.map(
-      (
-        checked,
-        index // map over the checkboxes
-      ) => (index === checkboxIndex ? !checked : checked) // if the index is same with the checkbox index  toggle between checked and not checked
+    const updatedCheckedState = checkedState.map((checked) =>
+      index === checkboxIndex ? !checked : checked
     );
 
     setCheckedState(updatedCheckedState);
 
-    // get the selected technologies
     const selectedTechnologies = updatedCheckedState
-    .map((checked, index) => checked ? technologies[index]) // map over the selected technologies and return the technology if it is checked else return undefined
-    .filter(Boolean); // exclude the falsy values [ https://mikebifulco.com/posts/javascript-filter-boolean ] 
-
+      .map((checked, index) => checked && technologies[index])
+      .filter(Boolean);
     updateForm({ tech_stack: selectedTechnologies });
   };
-
 
   //  start method to update project data
   function updateForm(currentValue) {
@@ -295,9 +293,7 @@ export default function Project() {
                             value={technology}
                             className="h-4 w-4 border-slate-300 text-slate-600 focus:ring-slate-600 cursor-pointer"
                             checked={checkedState[index]}
-                            onChange={(e) =>
-                              onChange={() => handleOnChangeCheckbox(index)} 
-                            }
+                            onChange={() => handleOnChangeCheckbox(index)}
                           />
                           <label
                             htmlFor={technology}
