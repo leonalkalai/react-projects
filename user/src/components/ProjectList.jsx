@@ -123,7 +123,7 @@ export default function ProjectList() {
           );
         }
         const fetchedProjects = await response.json(); // store the data
-        console.log(fetchedProjects);
+        //console.log(fetchedProjects);
         // console.log(`useEffect: ${JSON.parse(projects).length}`);
         setProjects(JSON.parse(fetchedProjects.data.body)); // set the projects state to the new data
       } catch (error) {
