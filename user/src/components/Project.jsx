@@ -116,6 +116,7 @@ export default function Project() {
     }
     fetchProject(); // get project data
     console.log(form);
+    console.log(fetchedProject);
   }, [params.id, navigate]); // repeat for a project id change - navigation change
   // end useEffect
 
