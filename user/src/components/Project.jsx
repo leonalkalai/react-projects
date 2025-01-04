@@ -205,6 +205,9 @@ export default function Project() {
           url: "",
           image: "",
         });
+      } else if (formProject) {
+        // Restore form to existing project data
+        setForm(formProject);
       }
       navigate(`${homePath}`); // return home
     }
