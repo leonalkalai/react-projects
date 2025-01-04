@@ -228,20 +228,15 @@ export default function Project() {
               A collection of the projects i have created over the years
               learning about several technologies.
             </p>
-            {categories &&
-              categories
-                .filter((category) => category === "image")
-                .map((category) => (
-                  <div
-                    key={category}
-                    className={`sm:col-span-4 bg-cover bg-center`}
-                    style={{
-                      backgroundImage: `url(${form[category]})`,
-                    }}
-                  >
-                    {form[category]}
-                  </div>
-                ))}
+            <div
+              key="image"
+              className={`sm:col-span-4 bg-cover bg-center`}
+              style={{
+                backgroundImage: `url(${form.image})`,
+              }}
+            >
+              {form.image}
+            </div>
           </div>
 
           <div className="grid max-w-2xl grid-cols-1 gap-x-6 gap-y-8">
