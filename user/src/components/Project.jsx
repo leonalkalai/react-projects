@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 // useState hook that lets you add a state variable to your component [ https://react.dev/reference/react/useState ]
 // useEffect hook to synchronize components [ https://react.dev/reference/react/useEffect ]
 
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useOutletContext } from "react-router-dom";
 // useParams - object of key/value pairs of URL parameters. [ https://v5.reactrouter.com/web/api/Hooks/useparams ]
 // useNavigate - hook go to the specific URL, and forward or backward pages  [ https://www.geeksforgeeks.org/reactjs-usenavigate-hook/ ]
 
@@ -57,7 +57,7 @@ export default function Project() {
     image: "",
   });
 
-  const [isNewProject, setIsNewProject] = useState(true); // set a state to check if new project
+  const { isNewProject, setIsNewProject } = useOutletContext(); // set a state to check if new project using App.jsx outlet context
 
   // set check status for checkbox tech stack [ https://www.freecodecamp.org/news/how-to-work-with-multiple-checkboxes-in-react/ ]
   const [checkedState, setCheckedState] = useState(
@@ -107,7 +107,9 @@ export default function Project() {
           navigate(`${homePath}`); // return to home
           return;
         }
-        setForm(fetchedProject); // fill the form with the project data
+        const projectData = JSON.parse(fetchedProject.data.body); // Parse the stringified body to get the project data
+        setForm(projectData); // Fill the form with the project data
+        console.log(projectData.image);
       } catch (error) {
         // catch error
         const message = error.message;
@@ -115,11 +117,13 @@ export default function Project() {
       }
     }
     fetchProject(); // get project data
-    console.log(form);
-    console.log(fetchedProject);
   }, [params.id, navigate]); // repeat for a project id change - navigation change
   // end useEffect
 
+  // Log form whenever it changes
+  useEffect(() => {
+    console.log(form); // This logs after form has been updated
+  }, [form]); // Runs when form changes
   /*  checkboxes update handler
     parameter checkbox index
     index map over the checkboxes and if the index is same with the checkbox index  toggle between checked and not checked
@@ -220,7 +224,9 @@ export default function Project() {
   //  start user input form
   return (
     <>
-      <h3 className="text-lg font-semibold p-4">Create Project</h3>
+      <h3 className="text-lg font-semibold p-4">
+        {isNewProject ? "Create " : "Edit "}Project
+      </h3>
       <form
         onSubmit={onSubmit} // [ https://react.dev/reference/react-dom/components/input#reading-the-input-values-when-submitting-a-form ]
         className="border rounded-lg overflow-hidden p-4"
@@ -236,7 +242,7 @@ export default function Project() {
             </p>
             <div
               key="image"
-              className={`sm:col-span-4 bg-cover bg-center`}
+              className={`sm:col-span-4 bg-contain bg-no-repeat bg-center w-full h-96 md:h-[50vh] lg:h-[50vh]`}
               style={{
                 backgroundImage: `url(${form.image})`,
               }}
