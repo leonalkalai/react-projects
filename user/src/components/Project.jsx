@@ -115,6 +115,7 @@ export default function Project() {
       }
     }
     fetchProject(); // get project data
+    console.log(form);
   }, [params.id, navigate]); // repeat for a project id change - navigation change
   // end useEffect
 
@@ -193,7 +194,6 @@ export default function Project() {
       const message = error.message;
       console.error(message);
     } finally {
-      console.log(form);
       // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch
       // reset form values for next use
       if (isNewProject) {
