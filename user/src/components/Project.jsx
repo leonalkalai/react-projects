@@ -193,6 +193,7 @@ export default function Project() {
       const message = error.message;
       console.error(message);
     } finally {
+      console.log(form);
       // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch
       // reset form values for next use
       if (isNewProject) {
@@ -212,7 +213,7 @@ export default function Project() {
       navigate(`${homePath}`); // return home
     }
   }
-  console.log(form);
+
   //  end method handler to submit data
 
   //  start user input form
