@@ -46,7 +46,7 @@ const Project = (props) => {
             key={category}
             className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0"
           >
-            ${props.project[category]}
+            {props.project[category]}
           </td>
         ))}
       <td className="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
@@ -179,10 +179,10 @@ export default function ProjectList() {
           <Project
             key={project._id}
             project={project}
-            // deleteProject={() => {
-            //   props.deleteProject(props.project._id);
-            // }}
-            deleteProject={deleteProject}
+            deleteProject={() => {
+              props.deleteProject(props.project._id);
+            }}
+            // deleteProject={deleteProject}
           />
         </tbody>
       );
