@@ -141,7 +141,7 @@ export default function ProjectList() {
   async function deleteProject(id) {
     // [ https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch ]
     const DELETE_URL = `${URL}/${id}`;
-    const response = await fetch(DELETE_URL, {
+    await fetch(DELETE_URL, {
       method: "DELETE", // add delete method
     }); // await to fetch the url
     const updatedProjects = projects.filter((el) => el._id !== id); // update the data using filter return the projects that don't have this id[ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter ]
