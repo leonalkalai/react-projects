@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 
 import { Link } from "react-router-dom"; // import link component [ https://www.geeksforgeeks.org/link-component-in-react-router/ ]
 
+import Popup from "./Popup";
+
 // project categories array
 const categories = [
   "name",
@@ -74,15 +76,13 @@ const Project = (props) => {
                     disabled:pointer-events-none disabled:opacity-50
                     border border-input
                     bg-background hover:bg-slate-100
-                    h-9 rounded-md px-3"
+                    h-9 rounded-md px-3
+                    text-zinc-50
+                    bg-red-600
+                    "
             color="red"
             type="button"
-            onClick={
-              // https://legacy.reactjs.org/docs/handling-events.html#gatsby-focus-wrapper
-              () => {
-                props.deleteProject(props.project._id);
-              }
-            }
+            onClick={() => props.openPopup(props.project._id)} // use props to use method openPopup()
           >
             Delete
           </button>
@@ -91,7 +91,7 @@ const Project = (props) => {
     </tr>
   );
 };
-
+// https://legacy.reactjs.org/docs/handling-events.html#gatsby-focus-wrapper
 // project categories and buttons end
 
 // Project list logic start
@@ -137,14 +137,40 @@ export default function ProjectList() {
     //return;
   }, []); // repeat when new project is added or project is deleted - the length of projects changes
 
+  const [showPopup, setShowPopup] = useState(false);
+  const [thisProject, setThisProject] = useState(null);
+
+  // Function to open the Popup
+  const openPopup = (projectId) => {
+    // get the project id
+    setThisProject(projectId); // set the project to delete
+    setShowPopup(true);
+  };
+
+  // Function to close the Popup
+  const closePopup = () => {
+    setShowPopup(false); // close the popup
+    setThisProject(null); // Reset the project to delete
+  };
+
+  const confirmDelete = async () => {
+    if (thisProject) {
+      await deleteProject(thisProject); // delete the project
+      setThisProject(null); // Reset the project to delete
+      setShowPopup(false); // Close the popup after deletion
+    }
+  };
+
   // delete project method start
-  async function deleteProject(id) {
+  async function deleteProject(projectId) {
     // [ https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch ]
-    const DELETE_URL = `${URL}/${id}`;
+    const DELETE_URL = `${URL}/${projectId}`;
     await fetch(DELETE_URL, {
       method: "DELETE", // add delete method
     }); // await to fetch the url
-    const updatedProjects = projects.filter((el) => el._id !== id); // update the data using filter return the projects that don't have this id[ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter ]
+    const updatedProjects = projects.filter(
+      (project) => project._id !== projectId
+    ); // update the data using filter return the projects that don't have this id[ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter ]
     setProjects(updatedProjects); // set the projects state to the new data
   }
   // delete project method end
@@ -179,7 +205,8 @@ export default function ProjectList() {
           <Project
             key={project._id}
             project={project}
-            deleteProject={() => deleteProject(project._id)}
+            openPopup={openPopup}
+            // deleteProject={() => deleteProject(project._id)}
             // deleteProject={deleteProject}
           />
         </tbody>
@@ -213,6 +240,9 @@ export default function ProjectList() {
           </table>
         </div>
       </div>
+      {showPopup && (
+        <Popup onConfirmDelete={confirmDelete} onCancelDelete={closePopup} />
+      )}
     </>
   );
 
