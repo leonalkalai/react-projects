@@ -240,6 +240,23 @@ export default function Project() {
               A collection of the projects i have created over the years
               learning about several technologies.
             </p>
+            <div className="sm:col-span-4">
+              <label
+                htmlFor="image"
+                className="block text-sm font-medium leading-6 text-slate-900"
+              >
+                image
+              </label>
+              <input
+                type="text"
+                name="image"
+                id="image"
+                className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-slate-900 placeholder:text-slate-400 focus:ring-0 sm:text-sm sm:leading-6"
+                placeholder="place your image url"
+                value={form.image}
+                onChange={(e) => updateForm({ image: e.target.value })}
+              />
+            </div>
             <div
               key="image"
               className={`sm:col-span-4 bg-contain bg-no-repeat bg-center w-full h-96 md:h-[50vh] lg:h-[50vh]`}
